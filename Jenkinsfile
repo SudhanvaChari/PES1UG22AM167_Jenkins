@@ -1,25 +1,22 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
                 script {
                     echo "Building the C++ program..."
-                    sh 'g++ -o PES1UG22AM167-1 main.cpp'  // Compile C++ file
+                    sh 'g++ -o PES1UG22AM167-1 main.cpp'
                 }
             }
         }
-
         stage('Test') {
             steps {
                 script {
                     echo "Testing the compiled program..."
-                    sh './PES1UG22AM167-1'  // Execute compiled program
+                    sh './PES1UG22AM167-1'
                 }
             }
         }
-
         stage('Deploy') {
             steps {
                 script {
@@ -28,10 +25,9 @@ pipeline {
             }
         }
     }
-
     post {
         failure {
             echo 'Pipeline failed'
-        }
-    }
+        }
+    }
 }
